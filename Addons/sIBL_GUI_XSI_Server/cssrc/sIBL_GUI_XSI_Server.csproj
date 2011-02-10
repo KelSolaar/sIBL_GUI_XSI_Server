@@ -94,17 +94,20 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Softimage.XSIMath, Version=9.0.242.0, Culture=neutral, PublicKeyToken=a90401fcf6bc5571, processorArchitecture=x86">
+    <Reference Include="Softimage.XSIMath, Version=9.1.89.0, Culture=neutral, PublicKeyToken=a90401fcf6bc5571, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Autodesk\Softimage 2011\Application\bin\Softimage.XSIMath.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_64\Softimage.XSIMath\9.5.178.0__a90401fcf6bc5571\Softimage.XSIMath.dll</HintPath>
     </Reference>
-    <Reference Include="Softimage.XSIOM, Version=9.0.242.0, Culture=neutral, PublicKeyToken=a90401fcf6bc5571, processorArchitecture=x86">
+    <Reference Include="Softimage.XSIOM, Version=9.1.89.0, Culture=neutral, PublicKeyToken=a90401fcf6bc5571, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Autodesk\Softimage 2011\Application\bin\Softimage.XSIOM.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_64\Softimage.XSIOM\9.5.178.0__a90401fcf6bc5571\Softimage.XSIOM.dll</HintPath>
     </Reference>
-    <Reference Include="Softimage.XSIUtil, Version=9.0.242.0, Culture=neutral, PublicKeyToken=a90401fcf6bc5571, processorArchitecture=x86">
+    <Reference Include="Softimage.XSIUtil, Version=9.1.89.0, Culture=neutral, PublicKeyToken=a90401fcf6bc5571, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Autodesk\Softimage 2011\Application\bin\Softimage.XSIUtil.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Windows\assembly\GAC_64\Softimage.XSIUtil\9.5.178.0__a90401fcf6bc5571\Softimage.XSIUtil.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
