@@ -5,7 +5,7 @@ using XSI.Helpers;
 
 namespace XSI.TCP
 {
-	public class RequestsService : ServiceProvider
+	public class RequestsService: ServiceProvider
 	{
 		public override object Clone()
 		{
@@ -14,7 +14,7 @@ namespace XSI.TCP
 
 		public override void OnAcceptConnection(ConnectionState in_state)
 		{
-			if (!in_state.WriteTo(Encoding.UTF8.GetBytes("Connected to sIBL_GUI_XSI_Server !\r\n"), 0, 25))
+			if (!in_state.WriteTo(Encoding.UTF8.GetBytes("Connected to sIBL_GUI_XSI_Server!\r\n"), 0, 25))
 			{
 				in_state.EndConnection(); //if write fails... then close connection
 			}
@@ -48,7 +48,7 @@ namespace XSI.TCP
 	}
 
 	// Manages and process the requests received from clients
-	class ClientRequests : Base
+	class ClientRequests: Base
 	{
 		static public Queue m_requests = new Queue();
 

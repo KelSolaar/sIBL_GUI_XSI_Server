@@ -14,7 +14,7 @@ public class sIBL_GUI_XSI_Server_Globals
     public static int MaxCnx = 10;
 }
 
-public class XSIPlugin : Base
+public class XSIPlugin: Base
 {
     public bool Load(PluginRegistrar in_reg)
     {
@@ -54,7 +54,7 @@ public class XSIPlugin : Base
 // Note: This callback is necessary in order to perform XSI operations in the
 // main thread. Calling XSI operations from worker threads may put XSI in an
 // undefined state.
-public class sIBL_GUI_XSI_Server_ProcessRequestsTimerEvent : Base
+public class sIBL_GUI_XSI_Server_ProcessRequestsTimerEvent: Base
 {
     public bool OnEvent(Context in_ctxt)
     {
@@ -90,7 +90,7 @@ public class sIBL_GUI_XSI_Server
 }
 
 // sIBL_GUI_XSI_Server_Start command
-public class sIBL_GUI_XSI_Server_Start : Base
+public class sIBL_GUI_XSI_Server_Start: Base
 {
     public bool Execute(Context in_ctxt)
     {
@@ -114,11 +114,11 @@ public class sIBL_GUI_XSI_Server_Start : Base
 }
 
 // sIBL_GUI_XSI_Server_Stop command
-public class sIBL_GUI_XSI_Server_Stop : Base
+public class sIBL_GUI_XSI_Server_Stop: Base
 {
     public bool Execute(Context in_ctxt)
     {
-        Info("sIBL_GUI_XSI_Server | Server Stopped !");
+        Info("sIBL_GUI_XSI_Server | Server Stopped!");
         sIBL_GUI_XSI_Server.Stop();
         TimerEvent evTimer = (TimerEvent)GetXSI().EventInfos["sIBL_GUI_XSI_Server_ProcessRequestsTimerEvent"];
         evTimer.Mute = true;
@@ -127,7 +127,7 @@ public class sIBL_GUI_XSI_Server_Stop : Base
 }
 
 // sIBL_GUI_XSI_Server menu
-public class sIBL_GUI_XSI_Server_Menu : Base
+public class sIBL_GUI_XSI_Server_Menu: Base
 {
     public bool Init(Context in_ctxt)
     {
@@ -157,7 +157,7 @@ public class sIBL_GUI_XSI_Server_Menu : Base
 // sIBL_GUI_XSI_Server_Property: Provides the UI for managing the sIBL_GUI_XSI_Server
 //
 
-public class sIBL_GUI_XSI_Server_Property : Base
+public class sIBL_GUI_XSI_Server_Property: Base
 {
     public bool Define(Context in_ctxt)
     {
@@ -291,7 +291,7 @@ public class sIBL_GUI_XSI_Server_Property : Base
                     if (buttonPressed == "StartServer")
                     {
                         // Start server
-                        Info("sIBL_GUI_XSI_Server | Server Started !");
+                        Info("sIBL_GUI_XSI_Server | Server Started!");
                         Property prop = (Property)ppgctxt.Source;
                         sIBL_GUI_XSI_Server.Start((String)prop.Parameters["Address"].GetValue2(null),
                                     (int)prop.Parameters["Port"].GetValue2(null),
@@ -300,7 +300,7 @@ public class sIBL_GUI_XSI_Server_Property : Base
                     }
                     else if (buttonPressed == "StopServer")
                     {
-                        Info("sIBL_GUI_XSI_Server | Server Stopped !");
+                        Info("sIBL_GUI_XSI_Server | Server Stopped!");
                         sIBL_GUI_XSI_Server.Stop();
                         evTimer.Mute = true;
                     }
@@ -338,7 +338,7 @@ public class sIBL_GUI_XSI_Server_Property : Base
 }
 
 // sIBL_GUI_XSI_Server_StartupEvent
-public class sIBL_GUI_XSI_Server_StartupEvent : Base
+public class sIBL_GUI_XSI_Server_StartupEvent: Base
 {
     public bool OnEvent(Context in_ctxt)
     {

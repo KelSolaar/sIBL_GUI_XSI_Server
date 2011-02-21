@@ -85,7 +85,7 @@ namespace XSI.TCP
 }
 
 	// Incoming connections service provider
-	public abstract class ServiceProvider : ICloneable
+	public abstract class ServiceProvider: ICloneable
 	{
 		// Provides a new instance of the object.
 		public virtual object Clone()
