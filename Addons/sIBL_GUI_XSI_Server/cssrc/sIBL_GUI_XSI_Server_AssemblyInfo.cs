@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HDRLabs")]
 [assembly: AssemblyProduct("sIBL_GUI_XSI_Server")]
-[assembly: AssemblyCopyright("Copyright © HDRLabs 2010")]
+[assembly: AssemblyCopyright("Copyright © HDRLabs 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -21,4 +21,4 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("10.1.61.0")]
+[assembly: AssemblyVersion("10.1.62.0")]
