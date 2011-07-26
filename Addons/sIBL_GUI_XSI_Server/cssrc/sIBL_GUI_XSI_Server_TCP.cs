@@ -42,9 +42,9 @@ namespace XSI.TCP
 			{
 				if (m_cnx.Available > 0)
 				{
-					return m_cnx.Receive(	in_buffer, 
-											in_offset, 
-											in_count, 
+					return m_cnx.Receive(	in_buffer,
+											in_offset,
+											in_count,
 											SocketFlags.None);
 				}
 				else

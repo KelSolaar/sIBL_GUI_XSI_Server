@@ -29,7 +29,7 @@ namespace XSI.TCP
 				if (readBytes > 0)
 				{
 					string receivedStr = Encoding.UTF8.GetString(buffer, 0, readBytes);
-					
+
 					// Put data on log stack
 					ClientRequests requests = new ClientRequests();
 					requests.AddEntry(receivedStr);
