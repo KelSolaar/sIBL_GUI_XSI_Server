@@ -6,8 +6,7 @@ Addons/sIBL_GUI_XSI_Server/netview_sIBL_GUI_XSI_Server.txt
 Addons/sIBL_GUI_XSI_Server/netview_sIBL_GUI_XSI_Server.xml
 
 *.pfx
+*.pyc
 *.xsiaddon
 
-Addons/sIBL_GUI_XSI_Server/Application/
-Addons/sIBL_GUI_XSI_Server/cssrc/obj/
 releases/
