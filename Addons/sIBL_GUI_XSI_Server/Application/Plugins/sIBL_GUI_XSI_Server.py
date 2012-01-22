@@ -5,7 +5,7 @@
 	Windows, Linux.
 
 **Description:**
-	| This module defines the sIBL_GUI_XSI_Server object.
+	This module defines the sIBL_GUI_XSI_Server object.
 
 **Others:**
 
@@ -17,6 +17,7 @@
 import SocketServer
 import collections
 import os
+import re
 import sys
 import thread
 from win32com.client import constants as siConstants
@@ -62,21 +63,29 @@ class StackDataRequestHandler(SocketServer.BaseRequestHandler):
 		return True
 
 class Constants(object):
+	namespace = "sIBL_GUI_XSI_Server"
+	author = __author__
+	email = __email__
+	website = "http://www.thomasmansencal.com/"
+	majorVersion = 1
+	minorVersion = 0
+	patchVersion = 0
 	defaultAddress = "127.0.0.1"
 	defaultPort = 12288
 	requestsHandler = StackDataRequestHandler
+	languages = ("VBScript", "JScript", "Python", "PythonScript", "PerlScript")
 
 class RuntimeGlobals(object):
 	server = None
 	requestsStack = collections.deque()
 
 def XSILoadPlugin(pluginRegistrar):
-	pluginRegistrar.Author = __author__
-	pluginRegistrar.Name = "sIBL_GUI_XSI_Server"
-	pluginRegistrar.URL = "http://www.thomasmansencal.com/"
-	pluginRegistrar.Email = "thomas.mansencal@gmail.com"
-	pluginRegistrar.Major = 1
-	pluginRegistrar.Minor = 0
+	pluginRegistrar.Author = Constants.author
+	pluginRegistrar.Name = Constants.namespace
+	pluginRegistrar.URL = Constants.website
+	pluginRegistrar.Email = Constants.email
+	pluginRegistrar.Major = Constants.majorVersion
+	pluginRegistrar.Minor = Constants.minorVersion
 
 	pluginRegistrar.RegisterCommand("sIBL_GUI_XSI_Server_start", "sIBL_GUI_XSI_Server_start")
 	pluginRegistrar.RegisterCommand("sIBL_GUI_XSI_Server_stop", "sIBL_GUI_XSI_Server_stop")
@@ -92,30 +101,35 @@ def XSIUnloadPlugin(pluginRegistrar):
 	return True
 
 def sIBL_GUI_XSI_Server_start_Init(context):
-	Application.LogMessage("'sIBL_GUI_XSI_Server_start_Init' called!")
+	Application.LogMessage("{0} | 'sIBL_GUI_XSI_Server_start_Init' called!".format(
+	Constants.namespace), siConstants.siVerbose)
 	return True
 
 def sIBL_GUI_XSI_Server_start_Execute():
-	Application.LogMessage("'sIBL_GUI_XSI_Server_start_Execute' called!")
-	startServer()
+	Application.LogMessage("{0} | 'sIBL_GUI_XSI_Server_start_Execute' called!".format(
+	Constants.namespace), siConstants.siVerbose)
 	return True
 
 def sIBL_GUI_XSI_Server_stop_Init(context):
-	Application.LogMessage("'sIBL_GUI_XSI_Server_stop_Init' called!")
+	Application.LogMessage("{0} | 'sIBL_GUI_XSI_Server_stop_Init' called!".format(
+	Constants.namespace), siConstants.siVerbose)
 	return True
 
 def sIBL_GUI_XSI_Server_stop_Execute():
-	Application.LogMessage("'sIBL_GUI_XSI_Server_stop_Execute' called!")
+	Application.LogMessage("{0} | 'sIBL_GUI_XSI_Server_stop_Execute' called!".format(
+	Constants.namespace), siConstants.siVerbose)
 	stopServer()
 	return True
 
 def sIBL_GUI_XSI_Server_startupEvent_OnEvent(context):
-	Application.LogMessage("'sIBL_GUI_XSI_Server_startupEvent_OnEvent' called!")
+	Application.LogMessage("{0} | 'sIBL_GUI_XSI_Server_startupEvent_OnEvent' called!".format(
+	Constants.namespace), siConstants.siVerbose)
 	startServer()
 	return True
 
 def sIBL_GUI_XSI_Server_timerEvent_OnEvent(context):
-	# Application.LogMessage("'sIBL_GUI_XSI_Server_timerEvent' called!")
+	# Application.LogMessage("{0} | 'sIBL_GUI_XSI_Server_timerEvent' called!".format(
+	# Constants.namespace), siConstants.siVerbose)	
 	processData()
 	return False
 
@@ -132,5 +146,13 @@ def processData():
 	while RuntimeGlobals.requestsStack:
 		data = RuntimeGlobals.requestsStack.popleft().strip()
 		if os.path.exists(data):
-			Application.ExecuteScript(data)
+			value = Application.ExecuteScript(data)
+			Application.LogMessage(value)
+		else:
+			for language in Constants.languages:
+				match = re.match(r"\s*(?P<language>{0})\s*\|(?P<code>.*)".format(language), data)
+				if match:
+					value = Application.ExecuteScriptCode(match.group("code"), match.group("language"))
+					Application.LogMessage(value)
+					break
 	return True
